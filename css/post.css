@@ -1,0 +1,64 @@
+/**
+ * POST CSS STYLES
+ */
+
+
+.frg-single-post {
+    display: block;
+}
+
+
+.frg-single-post .thumbnail,
+.frg-single-post .thumbnail .img-responsive {
+    border: none;
+    padding: 0;
+}
+
+.frg-single-post .caption {
+    padding: 20px;
+}
+
+.frg-single-post .caption h3 {
+    margin: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #444;
+}
+
+.frg-single-post .caption h3:hover {
+    color: #41B7D8;
+    transition: 0.3s;
+}
+
+.frg-single-post .caption p {
+    font-size: 14px;
+    color: #777;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.frg-post-content > div {
+    max-width: 100%;
+}
+
+.frg-post-content > div > img {
+    max-width: 100%;
+    height: auto;
+}
+
+.frg-post-content > div.aligncenter {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.frg-post-content .wp-caption-text {
+    text-align: left !important;
+}
+
+.frg-post-content > div.alignleft {
+    text-align: left;
+}
+
+.frg-post-content > div.alignright {
+    text-align: right;
+}

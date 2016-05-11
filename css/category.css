@@ -1,0 +1,58 @@
+/**
+ * CATEGORY CSS STYLES
+ */
+.frg-article {
+
+}
+
+.frg-article .thumbnail {
+	border: none;
+	padding: 0;
+	margin-bottom: 40px;
+}
+
+
+.frg-article .thumbnail > h4 {
+	padding: 15px 20px;
+	margin: 0;
+	color: #fff;
+	background: #41B7D8;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 18px;
+}
+
+.frg-article .thumbnail .caption {
+	box-sizing: border-box;
+	height: 170px;
+	padding: 15px;
+}
+
+.frg-article .thumbnail .caption h4 {
+	box-sizing: border-box;
+	margin: 0;
+	height: 70px;
+}
+
+.frg-article .thumbnail .caption h4 a {
+	color: #666;
+	text-transform: uppercase;
+	font-size: 15px;
+	font-weight: bold;
+	line-height: 20px;
+}
+
+.frg-article .thumbnail .caption h4 a:hover {
+	text-decoration: none;
+	color: #41B7D8;
+	transition: 0.5s;
+}
+
+.frg-article .thumbnail .caption p {
+	color: #999;
+	line-height: 24px;
+	margin: 0;
+}
+
+
+
