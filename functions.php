@@ -34,6 +34,8 @@ define('IMAGES', THEMEPATH . '/images');
 
 /**
  * Theme setup
+ *
+ * @since  Metro 1.0
  */
 if (!function_exists('metro_theme_setup')) {
     function metro_theme_setup()
@@ -61,7 +63,7 @@ if (!function_exists('metro_theme_setup')) {
             'main-nav' => __('Main Nav', 'metro')
         ]);
 
-        add_image_size('featured-image', 589, 333, true);
+        add_image_size('featured-image', 590, 333, true);
         add_image_size('post-image', 500, 9999, false);
         add_image_size('category-image', 280, 150, true);
     }
@@ -69,7 +71,38 @@ if (!function_exists('metro_theme_setup')) {
 add_action('after_setup_theme', 'metro_theme_setup');
 
 /**
+ * Register widget sidebar
+ *
+ * @since  Metro 1.0
+ */
+if (!function_exists('metro_widgets_init')) {
+    function metro_widgets_init()
+    {
+        register_sidebar([
+            'name'          => __('Main Sidebar', 'metro'),
+            'id'            => 'main-sidebar',
+            'description'   => __('Right sidebar', 'metro'),
+            'before_widget' => '<div class="sidebar-widget">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h4 class="widget-title">',
+            'after_title'   => '</h4>',
+        ]);
+
+        register_sidebar([
+            'name'          => __('Social Sidebar', 'metro'),
+            'id'            => 'social-sidebar',
+            'description'   => __('Sidebar for social sharing', 'metro'),
+            'before_title'  => '<h4 class="widget-title">',
+            'after_title'   => '</h4>',
+        ]);
+    }
+}
+add_action('widgets_init', 'metro_widgets_init');
+
+/**
  * Insert custom sized image
+ *
+ * @since  Metro 1.0
  */
 add_filter('image_size_names_choose', 'metro_custom_image');
 function metro_custom_image($sizes)
@@ -83,30 +116,36 @@ function metro_custom_image($sizes)
 }
 
 /**
- * Register widget sidebar
+ * Create custom taxonomy slideshow
+ *
+ * @since  Metro 1.0
  */
-if (!function_exists('metro_widgets_init')) {
-    function metro_widgets_init()
+if (!function_exists('metro_slideshow_taxonomy')) {
+    function metro_slideshow_taxonomy()
     {
-        register_sidebar([
-            'name'          => __('Main Sidebar', 'metro'),
-            'id'            => 'sidebar-1',
-            'description'   => __('Right sidebar', 'metro'),
-            'before_title'  => '<h4 class="widget-title">',
-            'after_title'   => '</h4>',
-        ]);
+        $labels = [
+            'name' => __('Slideshow', 'metro'),
+            'singular_name' => __('Slideshow', 'metro'),
+            'menu_name' => __('Slideshows', 'metro'),
+            'all_items' => __('All slideshow', 'metro'),
+            'edit_item' => __('Edit slideshow', 'metro'),
+            'view_item' => __('View slideshow', 'metro'),
+            'update_item' => __('Update slideshow', 'metro'),
+            'add_new_item' => __('Add new slideshow', 'metro')
+        ];
 
-        register_sidebar([
-            'name'          => __('Social Sidebar', 'metro'),
-            'id'            => 'sidebar-2',
-            'description'   => __('Sidebar for social sharing', 'metro'),
-            'before_title'  => '<h4 class="widget-title">',
-            'after_title'   => '</h4>',
-        ]);
+        $args = [
+            'labels' => $labels,
+            'public' => true,
+            'show_ui' => true,
+            'show_admin_column' => true,
+            'hierarchical' => true,
+        ];
+
+        register_taxonomy('slideshow', 'post', $args);
     }
 }
-add_action('widgets_init', 'metro_widgets_init');
-
+add_action('init', 'metro_slideshow_taxonomy');
 
 /**
  * Enqueues scripts and styles.
@@ -121,6 +160,7 @@ function metro_scripts()
     wp_enqueue_style('main-css', get_stylesheet_directory_uri() . '/css/main.css');
     wp_enqueue_style('post-css', get_stylesheet_directory_uri(). '/css/post.css');
     wp_enqueue_style('category-css', get_stylesheet_directory_uri(). '/css/category.css');
+    wp_enqueue_style('comment-css', get_stylesheet_directory_uri() . '/css/comments.css');
 
     if (is_singular() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
@@ -129,6 +169,7 @@ function metro_scripts()
     // Theme javascript
     wp_enqueue_script('jquery-2.2.3', get_stylesheet_directory_uri() . '/js/jquery-2.2.3.min.js');
     wp_enqueue_script('bootstrap-3.3.6-js', get_stylesheet_directory_uri() . '/js/bootstrap.min.js');
+    wp_enqueue_script('main-js', get_stylesheet_directory_uri() . '/js/main.js');
 }
 add_action('wp_enqueue_scripts', 'metro_scripts');
 
@@ -151,10 +192,11 @@ add_filter('excerpt_length', 'metro_excerpt_limit');
  */
 function string_limit_words($string, $word_limit)
 {
-  $words = explode(' ', $string, ($word_limit + 1));
-  if(count($words) > $word_limit)
-  array_pop($words);
-  return implode(' ', $words);
+    $words = explode(' ', $string, ($word_limit + 1));
+    if (count($words) > $word_limit) {
+        array_pop($words);
+    }
+    return implode(' ', $words);
 }
 
 

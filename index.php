@@ -11,7 +11,7 @@
                                     <a href="#">
                                     <div class="thumbnail">
                                         <div class="img-responsive">
-                                            <img src="images/slideshow-1.jpg" alt="slideshow 1">
+                                            <img src="<?php echo IMAGES; ?>/slideshow-1.jpg" alt="slideshow 1">
                                         </div>
                                         <div class="caption">
                                             <h3>A simple post with text</h3>

@@ -7,11 +7,12 @@
                                             ?>
                                             </h4>
                                             <?php
-                                            if (has_post_thumbnail()) : ?>
-                                                <a href="<?php echo get_permalink(); ?>">
-                                                    <?php the_post_thumbnail('category-image'); ?>
-                                                </a>
-                                            <?php endif; ?>
+                                            if (has_post_thumbnail()) {
+                                                echo '<a href="' . get_permalink() . '">';
+                                                the_post_thumbnail('category-image');
+                                                echo '</a>';
+                                            }
+                                            ?>
                                             <div class="caption">
                                                 <h4><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></h4>
                                                 <p><?php echo string_limit_words(get_the_excerpt(), 20) . '...'; ?></p>

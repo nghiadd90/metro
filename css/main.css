@@ -19,7 +19,7 @@
  *  # GENERAL
  *****************************/
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif !important;
 }
 
 .container {
@@ -34,13 +34,6 @@ body {
 
 #frg-sidebar {
     width: 35%;
-}
-
-/**
- * Fix thumbnail image scale to fit
- */
-.thumbnail img {
-    min-width: 100%;
 }
 
 .frg-single-post img {
@@ -269,15 +262,11 @@ body {
  ***********************************/
 #frg-slider {
     position: relative;
+    margin-bottom: 40px;
 }
 
 .frg-slideshow {
     display: block;
-}
-
-.frg-slideshow a {
-    display: block;
-    text-decoration: none;
 }
 
 .frg-slideshow .thumbnail,
@@ -286,58 +275,105 @@ body {
     padding: 0;
 }
 
-.frg-slideshow .caption {
+.frg-slideshow .carousel-caption {
+    max-width: 100%;
     padding: 20px;
+    margin: 0 auto;
+    position: static !important;
+    text-shadow: none;
+    text-align: left;
+    background: #fff;
 }
 
-.frg-slideshow .caption h3 {
+.frg-slideshow .carousel-caption h3 {
+    margin: 0;
+}
+
+.frg-slideshow .carousel-caption h3 a {
     margin: 0;
     font-weight: bold;
     text-transform: uppercase;
     color: #444;
 }
 
-.frg-slideshow .caption h3:hover {
+.frg-slideshow .carousel-caption h3 a:hover {
     color: #41B7D8;
     transition: 0.3s;
+    text-decoration: none;
 }
 
-.frg-slideshow .caption p {
+.frg-slideshow .carousel-caption p {
     font-size: 14px;
     color: #777;
     padding-top: 10px;
     padding-bottom: 10px;
+    margin: 0;
+}
+
+.frg-slideshow .carousel-indicators {
+    position: absolute;
+    top: 60% !important;
+    left: 90% !important;
+}
+
+.frg-slideshow .carousel-indicators li {
+    width: 14px;
+    height: 14px;
+    background: #fff;
+    border-radius: 50%;
+    border: none;
+}
+
+.frg-slideshow .carousel-indicators .active {
+    background: #41B7D8;
+    width: 14px;
+    height: 14px;
+    margin: 1px;
+}
+
+/**
+ * Fix thumbnail image scale to fit
+ */
+.thumbnail img {
+    min-width: 100%;
+}
+
+.carousel-inner > .item img {
+    height: 350px;
 }
 
 
 /**
- * Slideshow direction
+ * Carousel custom effect style
  */
-.frg-slideshow-direction {
-    position: absolute;
-    top: 65%;
-    right: 10px;
-    margin-right: 5px;
+.carousel.fade {
+  opacity: 1;
 }
-
-.frg-slideshow-direction span {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    margin: 0px 1px;
-    background: #fff;
-    border-radius: 50%;
+.carousel.fade .item {
+  -moz-transition: opacity ease-in-out 2s;
+  -o-transition: opacity ease-in-out 2s;
+  -webkit-transition: opacity ease-in-out 2s;
+  transition: opacity ease-in-out 2s;
+  left: 0 !important;
+  opacity: 0;
+  top:0;
+  position:absolute;
+  width: 100%;
+  display:block !important;
+  z-index:1;
 }
-
-.frg-slideshow-direction span:hover {
-    cursor: pointer;
+.carousel.fade .item:first-child {
+  top:auto;
+  position:relative;
 }
-
-.frg-slideshow-direction .frg-slideshow-active {
-    background: #41B7D8;
+.carousel.fade .item.active {
+  opacity: 1;
+  -moz-transition: opacity ease-in-out 2s;
+  -o-transition: opacity ease-in-out 2s;
+  -webkit-transition: opacity ease-in-out 2s;
+  transition: opacity ease-in-out 2s;
+  z-index:2;
 }
-
-
 
 /*****************************************
  * # PAGINATION
@@ -368,17 +404,17 @@ body {
 
 #frg-pagination .nav-links a {
     background: #fff;
-    color: #292929;    
+    color: #292929;
 }
 
 #frg-pagination .nav-links span {
     background: #41B7D8;
-    color: #fff;    
+    color: #fff;
 }
 
 #frg-pagination .nav-links a:hover {
     background: #41B7D8;
-    color: #fff;    
+    color: #fff;
     transition: 0.5s;
 }
 
@@ -545,6 +581,28 @@ footer {
 .frg-footer {
     background: #1F1F1F;
     padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.frg-footer h4 {
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+/**
+ * Footer featured
+ */
+.frg-footer-featured a {
+    color: #aaa;
+    font-family: Tahoma;
+}
+
+.frg-footer-featured a:hover {
+    text-decoration: none;
+    color: #fff;
+    transition: 0.8s;
 }
 
 /**

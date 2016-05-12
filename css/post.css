@@ -37,6 +37,11 @@
     padding-bottom: 10px;
 }
 
+.frg-single-post .caption p span {
+    margin-right: 10px;
+    font-style: italic;
+}
+
 .frg-post-content > div {
     max-width: 100%;
 }

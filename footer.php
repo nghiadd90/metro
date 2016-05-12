@@ -18,36 +18,36 @@
                         <div class="col-xs-6 col-sm-4">
                             <div class="frg-footer-featured">
                                 <h4>Featured</h4>
-                                <div class="media">
-                                    <div class="media-left">
-                                        <a href="#">
-                                            <img class="media-object" src="<?php echo IMAGES; ?>/feature-media-1.jpg" alt="footer featured image">
+                                <?php
+                                    /**
+                                     * Query featured post for slideshow
+                                     */
+                                    $args = [
+                                        'posts_per_page' => 3,
+                                        'post_type' => 'post',
+                                        'slideshow' => 'slider',
+                                        'post_status' => 'publish'
+                                    ];
+
+                                    $sliders = get_posts($args);
+                                    foreach ($sliders as $slider) {
+                                    ?>
+                                    <div class="media">
+                                        <div class="media-left">
+                                        <a href="<?php echo get_permalink($slider->ID); ?>">
+                                        <?php echo get_the_post_thumbnail($slider->ID, 'thumbnail'); ?>
+                                            <!-- <img class="media-object" src="<?php echo IMAGES; ?>/feature-media-1.jpg" alt="footer featured image"> -->
+                                        <?php echo wp_get_attachment_url($slider->ID); ?>
                                         </a>
-                                    </div>
-                                    <div class="media-body">
-                                        <h6 class="media-heading">Aliquet Pid Massa Porttitor Dictumst Ac Aenean A Dolor?</h6>
-                                    </div>
-                                </div>
-                                <div class="media">
-                                    <div class="media-left">
-                                        <a href="#">
-                                            <img class="media-object" src="<?php echo IMAGES; ?>/feature-media-1.jpg" alt="footer featured image">
-                                        </a>
-                                    </div>
-                                    <div class="media-body">
-                                        <h6 class="media-heading">Aliquet Pid Massa Porttitor Dictumst Ac Aenean A Dolor?</h6>
-                                    </div>
-                                </div>
-                                <div class="media">
-                                    <div class="media-left">
-                                        <a href="#">
-                                            <img class="media-object" src="<?php echo IMAGES; ?>/feature-media-1.jpg" alt="footer featured image">
-                                        </a>
-                                    </div>
-                                    <div class="media-body">
-                                        <h6 class="media-heading">Aliquet Pid Massa Porttitor Dictumst Ac Aenean A Dolor?</h6>
-                                    </div>
-                                </div>
+                                        </div>
+                                        <div class="media-body">
+                                            <h6 class="media-heading"><a href="<?php echo get_permalink($slider->ID); ?>"><?php echo $slider->post_title; ?></a></h6>
+                                        </div>
+                                   </div>
+                                    <?php
+                                    }
+                                ?>
+
                             </div>
                         </div>
                         <!-- End featured footer -->
@@ -77,13 +77,13 @@
                                 </div>
                                 <div class="col-xs-12">
                                     <div class="frg-footer-form">
-                                        <form>
+                                        <form role="search" id="searchform" method="get" action="<?php echo esc_url(home_url('/')); ?>">
                                             <div class="form-horizontal" role="form">
                                                 <div class="input-group">
-                                                    <label class="sr-only" for="frg-footer-search">Search</label>
-                                                    <input type="text" class="form-control" id="frg-footer-search" placeholder="Search...">
+                                                    <label class="sr-only" for="s"><?php _x('Tìm kiếm cho:', 'label', 'metro'); ?></label>
+                                                    <input type="text" class="form-control" name="s" id="s" value="<?php echo get_search_query(); ?>">
                                                     <span class="input-group-btn">
-                                                        <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                                                        <button class="btn btn-default" type="submit"><i class="fa fa-search fa-flip-horizontal fa-lg"></i></button>
                                                     </span>
                                                 </div>
                                             </div>
@@ -101,7 +101,7 @@
             <!-- Bottom footer -->
             <div class="frg-bottom">
                 <div class="container">
-                    <h6>Copyright &copy; 2016 MetroTheme <span class="pull-right"><a href="#">Back to Top <i class="fa fa-long-arrow-up"></i></a></span></h6>
+                    <h6>Copyright &copy; 2016 MetroTheme <span class="pull-right"><a class="frg-scroll-top" href="#">Back to Top <i class="fa fa-long-arrow-up"></i></a></span></h6>
                 </div>
             </div>
             <!-- End bottom footer -->

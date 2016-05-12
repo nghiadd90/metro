@@ -31,7 +31,7 @@
 
                     <div class="collapse navbar-collapse frg-navigation">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="/">Home</a></li>
+                            <li class="active"><a href="<?php echo esc_url(home_url('/')); ?>">Trang chủ</a></li>
                             <?php wp_list_pages(array('title_li' => '')); ?>
                         </ul>
                     </div>
@@ -48,7 +48,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-12 col-sm-3 text-center">
-                            <a href="#"><img src="<?php echo IMAGES; ?>/logo.png" alt="Logo"></a>
+                            <a href="<?php esc_url(bloginfo('url')); ?>"><img src="<?php echo IMAGES; ?>/logo.png" alt="Logo"></a>
                         </div>
                         <div class="col-xs-12 col-sm-9">
                             <img class="img-responsive" src="<?php echo IMAGES; ?>/banner.png" alt="Banner">
@@ -63,7 +63,7 @@
                 <div class="container">
                     <div class="collapse navbar-collapse frg-navigation">
                         <ul class="nav navbar-nav">
-                            <li><a href="/">Home</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/')); ?>">Trang chủ</a></li>
                             <?php wp_list_categories(array('title_li' => '')); ?>
                         </ul>
                     </div>
