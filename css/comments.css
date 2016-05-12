@@ -1,0 +1,16 @@
+/**
+ * COMMENTS CSS STYLES
+ */
+.frg-comment-box {
+    margin: 40px 0px;
+}
+
+.frg-comment-box h3 {
+    font-size: 18px;
+    font-weight: bold;
+
+}
+
+.frg-comment-box .commentlist {
+    list-style: none;
+}
