@@ -3,6 +3,7 @@
  */
 .frg-comment-box {
     margin: 40px 0px;
+    background: #fff;
 }
 
 .frg-comment-box h3 {
@@ -11,6 +12,18 @@
 
 }
 
-.frg-comment-box .commentlist {
+.frg-comment-box .well {
+	margin-bottom: 0;
+}
+
+.frg-comment-box ul {
     list-style: none;
+}
+
+.frg-comment-list > ul {
+	padding: 20px;
+}
+
+.comment-body {
+	border-bottom: 1px solid #eee;
 }
