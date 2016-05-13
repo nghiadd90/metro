@@ -22,7 +22,14 @@
     </div>
     <div class="frg-comment-list">
         <ul class="commentlist">
-        <?php wp_list_comments();?>
+        <?php
+        $args = array(
+            'avatar_size' => 75,
+            'type' => 'comment',
+            'callback' => 'format_comment'
+        ); 
+        wp_list_comments($args);
+        ?>
         </ul>
     </div>
     <div class="navigation">
